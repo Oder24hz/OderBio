@@ -1,260 +1,117 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oder24hz - Персональный сайт</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ODER24HZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'GothicA1';
-      src: url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700&display=swap');
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-    body, html {
-      height: 100%;
-      font-family: 'GothicA1', sans-serif;
-      overflow: auto;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      background-color: #111;
-      color: #eee;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .container {
-      position: relative;
+    body {
+      background-color: #000;
+      font-family: 'Cinzel', serif;
+      color: white;
       text-align: center;
-      z-index: 1;
-      max-width: 90%;
-      padding: 40px;
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      margin: 30px 0;
-      overflow: auto;
       height: 100vh;
+      overflow: hidden;
+      position: relative;
     }
-
-    h1, h2 {
-      font-size: 4rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.6);
-      animation: pulse 1.5s ease-in-out infinite;
-      color: #f2f2f2;
+    h1, p {
+      font-size: 2em;
+      text-shadow: 0 0 10px white, 0 0 20px white;
+      animation: textGlow 1.5s ease-in-out infinite alternate;
     }
-
-    h2 {
-      font-size: 1.5rem;
-      color: #ddd;
+    h1 {
+      font-size: 3em;
+      margin-top: 50px;
     }
-
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin: 20px 0;
-      animation: fadeIn 4s ease-out forwards;
-      color: #bbb;
-    }
-
-    .bio {
-      margin: 20px 0;
-    }
-
     a {
-      font-weight: bold;
-      color: #f2f2f2;
+      color: white;
       text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
       margin: 10px;
-      display: inline-block;
-      opacity: 0.8;
-      transition: opacity 0.3s ease;
+      font-size: 1.5em;
+      text-shadow: 0 0 5px white, 0 0 10px white;
+      transition: color 0.3s;
     }
-
     a:hover {
-      opacity: 1;
+      color: #f5a623;
     }
-
-    .socials a {
-      font-size: 1.2rem;
-    }
-
-    .pulse-text {
-      display: inline-block;
-      animation: pulseText 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
-      }
-      50% {
-        text-shadow: 0 0 50px rgba(255, 255, 255, 0.8), 0 0 100px rgba(255, 255, 255, 0.6);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes pulseText {
-      0%, 100% {
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.1);
-      }
-      50% {
-        text-shadow: 0 0 40px rgba(255, 255, 255, 0.9), 0 0 80px rgba(255, 255, 255, 0.6);
-      }
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -2;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .gradient-bg {
+    .particles {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, #111, #444);
-      animation: gradientPulse 10s ease-in-out infinite;
-      z-index: -1;
+      pointer-events: none;
+      z-index: 1;
     }
-
-    @keyframes gradientPulse {
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      clip-path: polygon(0 0, 100% 100%, 100% 0);
+      animation: particleMove 5s infinite linear;
+    }
+    @keyframes textGlow {
       0% {
-        background: radial-gradient(circle, #111, #444);
-      }
-      50% {
-        background: radial-gradient(circle, #222, #666);
+        text-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white;
       }
       100% {
-        background: radial-gradient(circle, #111, #444);
+        text-shadow: 0 0 20px white, 0 0 30px white, 0 0 40px white;
       }
     }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.5rem;
+    @keyframes particleMove {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
       }
-      h2 {
-        font-size: 1.2rem;
-      }
-      .container {
-        padding: 20px;
-      }
-      body {
-        padding: 10px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      h1 {
-        font-size: 2rem;
-      }
-      h2 {
-        font-size: 1rem;
+      100% {
+        transform: translate(200px, 200px) rotate(360deg);
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
-  <div class="gradient-bg"></div>
-
-  <div class="container">
-    <h1><span class="pulse-text">♱ Oder24hz ♱</span></h1>
-    <h2><span class="pulse-text">♱ Просто милый парень из России ♱</span></h2>
-
-    <p><span class="pulse-text">♱ Возраст: 17 ♱</span></p>
-    <p><span class="pulse-text">♱ Местоположение: Россия ♱</span></p>
-
-    <div class="bio">
-      <p>Я молодой парень, живу в России. Увлекаюсь машинами и компьютерами, стараюсь копить на машину и права. У меня проблемы с головой — есть три диагноза из психушки. Но на самом деле я добрый, просто мои беды в голове.</p>
-      <p>Многим я делал плохо, многим помогал. Из-за этого я не могу считать себя ни добрым, ни злым — это делает за меня общество. Люди говорят, что я уродец, что я жирный и сильно ранимый, без чувств. Я не понимаю людей.</p>
-      <p><strong>Из плюсов:</strong> я спас четырёх человек от самовыпила, вернул многим чувства к партнёру, помог людям с их внутренними проблемами.</p>
-      <p><strong>Из минусов:</strong> меня многие не понимают, я всё принимаю близко к сердцу. Есть проблемы со здоровьем — с сердцем и лёгкими. В любой момент могу словить инсульт (к счастью, ещё такого не было).</p>
-      <p><strong>Забавный факт:</strong> мне 17 лет, я 196 см ростом и вешу 120 кг (да, я жирный). Мечтаю накопить на машину и работать в такси. :)</p>
-    </div>
-
-    <div class="socials">
-      <a href="https://www.twitch.tv/oder24hz" target="_blank">♱ Twitch ♱</a>
-      <a href="https://www.youtube.com/@Oder24hz" target="_blank">♱ YouTube ♱</a>
-      <a href="https://t.me/Oderrrr" target="_blank">♱ Telegram ♱</a>
-      <a href="https://www.tiktok.com/@2011.o" target="_blank">♱ TikTok ♱</a>
-    </div>
+  <div class="particles" id="particles"></div>
+  <h1>♱ ODER24HZ ♱</h1>
+  <p>♱ ПРОСТО МИЛЫЙ ПАРЕНЬ ИЗ РОССИИ ♱</p>
+  <p>♱ Возраст: 17 ♱</p>
+  <p>♱ Местоположение: Россия ♱</p>
+  <p>Я молодой парень, живу в России. Увлекаюсь машинами и компьютерами, стараюсь копить на машину и права. У меня проблемы с головой — есть три диагноза из психушки. Но на самом деле я добрый, просто мои беды в голове.</p>
+  <p>Многим я делал плохо, многим помогал. Из-за этого я не могу считать себя ни добрым, ни злым — это делает за меня общество. Люди говорят, что я уродец, что я жирный и сильно ранимый, без чувств. Я не понимаю людей.</p>
+  <p>Из плюсов: я спас четырёх человек от самовыпила, вернул многим чувства к партнёру, помог людям с их внутренними проблемами.</p>
+  <p>Из минусов: меня многие не понимают, я всё принимаю близко к сердцу. Есть проблемы со здоровьем — с сердцем и лёгкими. В любой момент могу словить инсульт (к счастью, ещё такого не было).</p>
+  <p>Забавный факт: мне 17 лет, я 196 см ростом и вешу 120 кг (да, я жирный). Мечтаю накопить на машину и работать в такси. :)</p>
+  <div>
+    <a href="https://www.twitch.tv/oder24hz" target="_blank">♱ TWITCH ♱</a>
+    <a href="https://www.youtube.com/@Oder24hz" target="_blank">♱ YOUTUBE ♱</a>
+    <a href="https://t.me/Oderrrr" target="_blank">♱ TELEGRAM ♱</a>
+    <a href="https://www.tiktok.com/@2011.o" target="_blank">♱ TIKTOK ♱</a>
   </div>
 
-  <canvas id="particles"></canvas>
-
   <script>
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
+    const particleContainer = document.getElementById('particles');
 
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    });
-
-    const particles = [];
-    const count = 100;
-
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        radius: Math.random() * 15 + 5,
-        dx: Math.random() * 1 - 0.5,
-        dy: Math.random() * 1 - 0.5,
-        alpha: 0.3 + Math.random() * 0.7
-      });
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-      for (let p of particles) {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        const angle = Math.random() * 2 * Math.PI;
-        ctx.lineTo(p.x + Math.cos(angle) * p.radius, p.y + Math.sin(angle) * p.radius);
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha})`;
-        ctx.stroke();
-        p.x += p.dx;
-        p.y += p.dy;
-
-        if (p.x < 0 || p.x > w) p.dx *= -1;
-        if (p.y < 0 || p.y > h) p.dy *= -1;
+    // Function to generate particles
+    function createParticles() {
+      for (let i = 0; i < 50; i++) {
+        let particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = `${Math.random() * window.innerWidth}px`;
+        particle.style.top = `${Math.random() * window.innerHeight}px`;
+        particle.style.animationDuration = `${Math.random() * 3 + 3}s`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particleContainer.appendChild(particle);
       }
-      requestAnimationFrame(draw);
     }
 
-    draw();
+    createParticles();
   </script>
 </body>
 </html>
