@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ODER24HZ</title>
 
   <!-- Готический жирный шрифт -->
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -52,33 +52,42 @@
 
     .particle {
       position: absolute;
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       background-color: white;
-      clip-path: polygon(0 0, 100% 100%, 100% 0);
-      animation: particleMove 5s infinite linear;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation: particleMove 6s infinite linear;
+      opacity: 0.7;
     }
 
     .container {
       position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 20px 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px 100px;
       z-index: 2;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .text-block {
+      max-width: 800px;
+      text-align: justify;
     }
 
     h1 {
-      font-size: 3em;
+      font-size: 3.2em;
       text-align: center;
       margin-bottom: 30px;
       animation: textGlow 2s ease-in-out infinite alternate;
+      text-shadow: 0 0 10px white;
     }
 
     p {
       font-size: 1.4em;
       line-height: 1.7;
       margin-bottom: 25px;
-      text-align: justify;
       text-shadow: 0 0 5px white;
       animation: textGlow 2s ease-in-out infinite alternate;
     }
@@ -112,12 +121,8 @@
     }
 
     @keyframes backgroundGlow {
-      0% {
-        opacity: 0.2;
-      }
-      100% {
-        opacity: 0.5;
-      }
+      0% { opacity: 0.2; }
+      100% { opacity: 0.5; }
     }
 
     @keyframes particleMove {
@@ -126,7 +131,7 @@
         opacity: 1;
       }
       100% {
-        transform: translate(200px, 200px) rotate(360deg);
+        transform: translate(150px, 250px) rotate(360deg);
         opacity: 0;
       }
     }
@@ -149,27 +154,29 @@
   <div class="particles" id="particles"></div>
 
   <div class="container">
-    <h1>♱ ODER24HZ ♱</h1>
+    <div class="text-block">
+      <h1>♱ ODER24HZ ♱</h1>
 
-    <p>♱ ПРОСТО МИЛЫЙ ПАРЕНЬ ИЗ РОССИИ ♱</p>
-    <p>♱ Возраст: 17 ♱</p>
-    <p>♱ Местоположение: Россия ♱</p>
+      <p>☠ ♱ ПРОСТО МИЛЫЙ ПАРЕНЬ ИЗ РОССИИ ♱ ☠</p>
+      <p>♱ Возраст: 17 ♱</p>
+      <p>♱ Местоположение: Россия ♱</p>
 
-    <p>Я молодой парень, живу в России. Увлекаюсь машинами и компьютерами, стараюсь копить на машину и права. У меня проблемы с головой — есть три диагноза из психушки. Но на самом деле я добрый, просто мои беды в голове.</p>
+      <p>Я молодой парень, живу в России. Увлекаюсь машинами и компьютерами, стараюсь копить на машину и права. У меня проблемы с головой — есть три диагноза из психушки. Но на самом деле я добрый, просто мои беды в голове.</p>
 
-    <p>Многим я делал плохо, многим помогал. Из-за этого я не могу считать себя ни добрым, ни злым — это делает за меня общество. Люди говорят, что я уродец, что я жирный и сильно ранимый, без чувств. Я не понимаю людей.</p>
+      <p>Многим я делал плохо, многим помогал. Из-за этого я не могу считать себя ни добрым, ни злым — это делает за меня общество. Люди говорят, что я уродец, что я жирный и сильно ранимый, без чувств. Я не понимаю людей.</p>
 
-    <p>Из плюсов: я спас четырёх человек от самовыпила, вернул многим чувства к партнёру, помог людям с их внутренними проблемами.</p>
+      <p>Из плюсов: я спас четырёх человек от самовыпила, вернул многим чувства к партнёру, помог людям с их внутренними проблемами.</p>
 
-    <p>Из минусов: меня многие не понимают, я всё принимаю близко к сердцу. Есть проблемы со здоровьем — с сердцем и лёгкими. В любой момент могу словить инсульт (к счастью, ещё такого не было).</p>
+      <p>Из минусов: меня многие не понимают, я всё принимаю близко к сердцу. Есть проблемы со здоровьем — с сердцем и лёгкими. В любой момент могу словить инсульт (к счастью, ещё такого не было).</p>
 
-    <p>Забавный факт: мне 17 лет, я 196 см ростом и вешу 120 кг (да, я жирный). Мечтаю накопить на машину и работать в такси. :)</p>
+      <p>☠ Забавный факт: мне 17 лет, я 196 см ростом и вешу 120 кг (да, я жирный). Мечтаю накопить на машину и работать в такси. ☠</p>
 
-    <div class="links">
-      <a href="https://www.twitch.tv/oder24hz" target="_blank">♱ TWITCH ♱</a>
-      <a href="https://www.youtube.com/@Oder24hz" target="_blank">♱ YOUTUBE ♱</a>
-      <a href="https://t.me/Oderrrr" target="_blank">♱ TELEGRAM ♱</a>
-      <a href="https://www.tiktok.com/@2011.o" target="_blank">♱ TIKTOK ♱</a>
+      <div class="links">
+        <a href="https://www.twitch.tv/oder24hz" target="_blank">♱ TWITCH ♱</a>
+        <a href="https://www.youtube.com/@Oder24hz" target="_blank">♱ YOUTUBE ♱</a>
+        <a href="https://t.me/Oderrrr" target="_blank">♱ TELEGRAM ♱</a>
+        <a href="https://www.tiktok.com/@2011.o" target="_blank">♱ TIKTOK ♱</a>
+      </div>
     </div>
   </div>
 
@@ -177,7 +184,7 @@
     const particleContainer = document.getElementById('particles');
 
     function createParticles() {
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 60; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         particle.style.left = `${Math.random() * window.innerWidth}px`;
