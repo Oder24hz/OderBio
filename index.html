@@ -5,60 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ODER24HZ</title>
 
-  <!-- Готический жирный шрифт -->
+  <!-- Шрифты: готика + Joti One -->
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/joti-one" rel="stylesheet" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     html, body {
       background-color: #000;
-      font-family: 'UnifrakturCook', cursive;
       color: white;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      height: 100%;
+      font-family: 'UnifrakturCook', cursive;
+      position: relative;
     }
 
     body {
-      min-height: 100vh;
-      position: relative;
-      z-index: 2;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 60px 20px;
-    }
-
-    .background-glow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.9));
-      animation: backgroundGlow 3s ease-in-out infinite alternate;
-      z-index: 0;
-    }
-
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
+      min-height: 100vh;
+      text-align: center;
       z-index: 1;
     }
 
+    /* Мерцание фона */
+    .background-glow {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.1), rgba(0,0,0,0.9));
+      animation: bgGlow 3s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    /* Тёмный крест */
+    .background-cross {
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 45%, rgba(50,50,50,0.2) 45%, rgba(50,50,50,0.2) 55%, transparent 55%),
+        linear-gradient(0deg, transparent 45%, rgba(50,50,50,0.2) 45%, rgba(50,50,50,0.2) 55%, transparent 55%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Частицы */
+    .particles {
+      position: fixed; inset:0;
+      pointer-events:none; z-index:1;
+    }
     .particle {
       position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: white;
+      width: 10px; height: 10px;
+      background: white;
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
       animation: particleMove 6s infinite linear;
       opacity: 0.6;
@@ -68,88 +69,58 @@
       position: relative;
       z-index: 2;
       max-width: 800px;
-      text-align: center;
     }
 
     h1 {
       font-size: 3em;
       margin-bottom: 30px;
-      animation: textGlow 2s ease-in-out infinite alternate;
+      font-family: 'UnifrakturCook', cursive;
+      animation: textGlow 2s infinite alternate;
       text-shadow: 0 0 10px white;
     }
 
     p {
+      font-family: 'Joti One', cursive;
       font-size: 1.4em;
       line-height: 1.7;
       margin-bottom: 25px;
-      text-align: center;
+      animation: textGlow 2s infinite alternate;
       text-shadow: 0 0 5px white;
-      animation: textGlow 2s ease-in-out infinite alternate;
-    }
-
-    .links {
-      margin-top: 50px;
     }
 
     .links a {
-      display: inline-block;
       margin: 10px 15px;
       color: white;
-      text-decoration: none;
       font-size: 1.3em;
+      text-decoration: none;
       text-shadow: 0 0 5px white;
-      transition: color 0.3s ease;
+      transition: color .3s;
     }
-
-    .links a:hover {
-      color: #f5a623;
-    }
+    .links a:hover { color: #f5a623; }
 
     @keyframes textGlow {
-      0% {
-        text-shadow: 0 0 10px white, 0 0 20px white;
-      }
-      100% {
-        text-shadow: 0 0 20px white, 0 0 40px white;
-      }
+      0% { text-shadow: 0 0 10px white, 0 0 20px white; }
+      100% { text-shadow: 0 0 20px white, 0 0 40px white; }
     }
-
-    @keyframes backgroundGlow {
+    @keyframes bgGlow {
       0% { opacity: 0.2; }
       100% { opacity: 0.5; }
     }
-
     @keyframes particleMove {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(150px, 250px) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translate(0,0) rotate(0deg); opacity:1; }
+      100% { transform: translate(150px,250px) rotate(360deg); opacity:0; }
     }
 
-    @media (max-width: 600px) {
-      body {
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 15px;
-      }
-      h1 {
-        font-size: 2.2em;
-      }
-      p {
-        font-size: 1.1em;
-      }
-      .links a {
-        font-size: 1em;
-      }
+    @media (max-width:600px) {
+      h1 { font-size:2.2em; }
+      p { font-size:1.1em; }
+      .links a { font-size:1em; }
     }
   </style>
 </head>
 <body>
   <div class="background-glow"></div>
+  <div class="background-cross"></div>
   <div class="particles" id="particles"></div>
 
   <div class="container">
@@ -167,7 +138,7 @@
 
     <p>Из минусов: меня многие не понимают, я всё принимаю близко к сердцу. Есть проблемы со здоровьем — с сердцем и лёгкими. В любой момент могу словить инсульт (к счастью, ещё такого не было).</p>
 
-    <p>Забавный факт: мне 17 лет, я 196 см ростом и вешу 120 кг (да, я жирный). Мечтаю накопить на машину и работать в такси. :)</p>
+    <p>Забавный факт: мне 17 лет, я 196 см ростом и вешу 120 кг (да, я жирный). Мечтаю накопить на машину и работать в такси. :)</p>
 
     <div class="links">
       <a href="https://www.twitch.tv/oder24hz" target="_blank">♱ TWITCH ♱</a>
@@ -178,21 +149,16 @@
   </div>
 
   <script>
-    const particleContainer = document.getElementById('particles');
-
-    function createParticles() {
-      for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = `${Math.random() * window.innerWidth}px`;
-        particle.style.top = `${Math.random() * window.innerHeight}px`;
-        particle.style.animationDuration = `${Math.random() * 3 + 3}s`;
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        particleContainer.appendChild(particle);
-      }
+    const container = document.getElementById('particles');
+    for(let i=0; i<50; i++){
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random()*window.innerWidth+'px';
+      p.style.top = Math.random()*window.innerHeight+'px';
+      p.style.animationDuration = (Math.random()*3+3)+'s';
+      p.style.animationDelay = Math.random()*5+'s';
+      container.appendChild(p);
     }
-
-    createParticles();
   </script>
 </body>
 </html>
