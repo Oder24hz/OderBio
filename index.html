@@ -6,8 +6,8 @@
   <title>Oder24hz - Персональный сайт</title>
   <style>
     @font-face {
-      font-family: 'Ebbe';
-      src: url('ebbe.ttf') format('truetype');
+      font-family: 'GothicA1';
+      src: url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700&display=swap');
     }
 
     * {
@@ -18,13 +18,15 @@
 
     body, html {
       height: 100%;
-      font-family: 'Ebbe', sans-serif;
+      font-family: 'GothicA1', sans-serif;
       overflow: auto;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      background-color: #fff;
-      color: #121212;
+      background-color: #111;
+      color: #eee;
+      flex-direction: column;
+      width: 100%;
     }
 
     .container {
@@ -32,33 +34,29 @@
       text-align: center;
       z-index: 1;
       max-width: 90%;
-      padding: 30px;
+      padding: 40px;
       border-radius: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7);
       transition: background 0.3s ease, box-shadow 0.3s ease;
       margin: 30px 0;
-      overflow: auto;  /* Чтобы был доступ к прокрутке */
-      height: 100vh; /* Позволяет прокручивать */
+      overflow: auto;
+      height: 100vh;
     }
 
     h1, h2 {
-      font-size: 3rem;
+      font-size: 4rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    h1 {
-      font-size: 4rem;
-      text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.6);
+      animation: pulse 1.5s ease-in-out infinite;
+      color: #f2f2f2;
     }
 
     h2 {
       font-size: 1.5rem;
-      color: #aaa;
+      color: #ddd;
     }
 
     p {
@@ -66,6 +64,7 @@
       line-height: 1.6;
       margin: 20px 0;
       animation: fadeIn 4s ease-out forwards;
+      color: #bbb;
     }
 
     .bio {
@@ -74,7 +73,7 @@
 
     a {
       font-weight: bold;
-      color: #000;
+      color: #f2f2f2;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -94,15 +93,15 @@
 
     .pulse-text {
       display: inline-block;
-      animation: pulseText 2s ease-in-out infinite;
+      animation: pulseText 1.5s ease-in-out infinite;
     }
 
     @keyframes pulse {
       0%, 100% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
       }
       50% {
-        text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 50px rgba(255, 255, 255, 0.8), 0 0 100px rgba(255, 255, 255, 0.6);
       }
     }
 
@@ -117,10 +116,10 @@
 
     @keyframes pulseText {
       0%, 100% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.1);
       }
       50% {
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 25px rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 40px rgba(255, 255, 255, 0.9), 0 0 80px rgba(255, 255, 255, 0.6);
       }
     }
 
@@ -128,9 +127,32 @@
       position: fixed;
       top: 0;
       left: 0;
-      z-index: -1;
+      z-index: -2;
       width: 100vw;
       height: 100vh;
+    }
+
+    .gradient-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle, #111, #444);
+      animation: gradientPulse 10s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientPulse {
+      0% {
+        background: radial-gradient(circle, #111, #444);
+      }
+      50% {
+        background: radial-gradient(circle, #222, #666);
+      }
+      100% {
+        background: radial-gradient(circle, #111, #444);
+      }
     }
 
     @media (max-width: 600px) {
@@ -148,27 +170,12 @@
       }
     }
 
-    .gradient-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(-45deg, #ffffff, #cccccc);
-      background-size: 400% 400%;
-      animation: gradientPulse 15s ease-in-out infinite;
-      z-index: -2;
-    }
-
-    @keyframes gradientPulse {
-      0% {
-        background-position: 0% 50%;
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 2rem;
       }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
+      h2 {
+        font-size: 1rem;
       }
     }
   </style>
@@ -233,9 +240,9 @@
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
         const angle = Math.random() * 2 * Math.PI;
-        ctx.lineTo(p.x + Math.cos(angle) * 10, p.y + Math.sin(angle) * 10);
+        ctx.lineTo(p.x + Math.cos(angle) * p.radius, p.y + Math.sin(angle) * p.radius);
+        ctx.lineWidth = 1;
         ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha})`;
-        ctx.lineWidth = 2;
         ctx.stroke();
         p.x += p.dx;
         p.y += p.dy;
@@ -243,9 +250,4 @@
         if (p.x < 0 || p.x > w) p.dx *= -1;
         if (p.y < 0 || p.y > h) p.dy *= -1;
       }
-      requestAnimationFrame(draw);
-    }
-    draw();
-  </script>
-</body>
-</html>
+     
