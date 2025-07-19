@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ODER24HZ</title>
 
-  <!-- Шрифт Ireland Regular (пример, если он доступен через Google Fonts) -->
-  <link href="https://fonts.googleapis.com/css2?family=Ireland:wght@400&display=swap" rel="stylesheet" />
-
+  <!-- Подключаем локальный шрифт -->
   <style>
+    @font-face {
+      font-family: 'Ireland Regular';
+      src: url('fonts/ofont.ru_Ireland.ttf') format('truetype'); /* Путь к шрифту */
+      font-weight: normal;
+      font-style: normal;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -17,7 +22,7 @@
 
     html, body {
       background-color: #000;
-      font-family: 'Ireland', sans-serif; /* Используем шрифт Ireland */
+      font-family: 'Ireland Regular', sans-serif; /* Используем локально подключённый шрифт */
       color: white;
       overflow-x: hidden;
       scroll-behavior: smooth;
